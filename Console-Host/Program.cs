@@ -12,24 +12,32 @@ namespace Console_Host
     {
         static void Main(string[] args)
         {
-            Uri baseAddress = new Uri("http://localhost:6001");
+            Uri tcpBaseAddress = new Uri("net.tcp://localhost:6789");
+            Uri httpBaseAddress = new Uri("http://localhost:6790");
 
-            ServiceHost sh = new ServiceHost(typeof(Service1), baseAddress);
+            ServiceHost Sh = new ServiceHost(typeof(Service1), new Uri[] { tcpBaseAddress, httpBaseAddress });
 
-            ServiceEndpoint se = sh.AddServiceEndpoint(typeof(IService1), new BasicHttpBinding(), baseAddress);
+            ServiceEndpoint Se = Sh.AddServiceEndpoint(typeof(IService1), new NetTcpBinding(), tcpBaseAddress);
+            ServiceEndpoint httpSe = Sh.AddServiceEndpoint(typeof(IService1), new BasicHttpBinding(), httpBaseAddress);
 
             ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
             smb.HttpGetEnabled = true;
-            sh.Description.Behaviors.Add(smb);
+            Sh.Description.Behaviors.Add(smb);
 
-            sh.Open();
-            Console.WriteLine("Service is ready.......");
+            Sh.Open();
+
+            Console.WriteLine("Started.....");
+
+            foreach (var item in Sh.Description.Endpoints)
+            {
+                Console.WriteLine("Address: " + item.Address.ToString());
+                Console.WriteLine("Binding: " + item.Binding.Name.ToString());
+                Console.WriteLine("Contract: " + item.Contract.Name.ToString());
+            }
 
             Console.ReadLine();
 
-            sh.Close();
-
-
+            Sh.Close();
         }
     }
 }
