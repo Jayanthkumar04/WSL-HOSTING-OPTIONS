@@ -13,7 +13,7 @@ namespace Console_Host
         static void Main(string[] args)
         {
             Uri tcpBaseAddress = new Uri("net.tcp://localhost:6789");
-            Uri httpBaseAddress = new Uri("http://localhost:6790");
+            Uri httpBaseAddress = new Uri("http://localhost:6790/MyHttpEndPoint");
 
             ServiceHost Sh = new ServiceHost(typeof(Service1), new Uri[] { tcpBaseAddress, httpBaseAddress });
 
@@ -21,9 +21,17 @@ namespace Console_Host
             ServiceEndpoint httpSe = Sh.AddServiceEndpoint(typeof(IService1), new BasicHttpBinding(), httpBaseAddress);
 
             ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-            smb.HttpGetEnabled = true;
+            smb.HttpGetEnabled = false;
             Sh.Description.Behaviors.Add(smb);
+            
+            ServiceEndpoint httpSeMex = Sh.AddServiceEndpoint(typeof(IMetadataExchange),
+                                                                MetadataExchangeBindings.CreateMexHttpBinding(),
+                                                                "http://localhost:6790/MyHttpEndPoint/mex");
 
+            ServiceEndpoint tcpSeMex = Sh.AddServiceEndpoint(typeof(IMetadataExchange),
+                                                                MetadataExchangeBindings.CreateMexTcpBinding(),
+                                                                "net.tcp://localhost:6789/mex");
+            
             Sh.Open();
 
             Console.WriteLine("Started.....");
@@ -38,6 +46,7 @@ namespace Console_Host
             Console.ReadLine();
 
             Sh.Close();
+
         }
     }
 }
