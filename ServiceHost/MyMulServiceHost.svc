@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost  Service="AddService.Service1" CodeBehind="Service1.svc.cs" %>
