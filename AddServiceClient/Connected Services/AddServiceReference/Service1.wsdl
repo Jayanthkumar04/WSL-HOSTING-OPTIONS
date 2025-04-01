@@ -6,22 +6,60 @@
       <xsd:import schemaLocation="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_Addition_InputMessage">
-    <wsdl:part name="parameters" element="tns:Addition" />
+  <wsdl:message name="AdditionService_AddServiceInt_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddServiceInt" />
   </wsdl:message>
-  <wsdl:message name="IService1_Addition_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AdditionResponse" />
+  <wsdl:message name="AdditionService_AddServiceInt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddServiceIntResponse" />
   </wsdl:message>
-  <wsdl:portType name="IService1">
-    <wsdl:operation name="Addition">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Addition" message="tns:IService1_Addition_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AdditionResponse" message="tns:IService1_Addition_OutputMessage" />
+  <wsdl:message name="AdditionService_AddServiceDouble_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddServiceDouble" />
+  </wsdl:message>
+  <wsdl:message name="AdditionService_AddServiceDouble_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddServiceDoubleResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdditionService_Division_InputMessage">
+    <wsdl:part name="parameters" element="tns:Division" />
+  </wsdl:message>
+  <wsdl:message name="AdditionService_Division_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DivisionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdditionService">
+    <wsdl:operation name="AddServiceInt">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdditionService/AddServiceInt" message="tns:AdditionService_AddServiceInt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdditionService/AddServiceIntResponse" message="tns:AdditionService_AddServiceInt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddServiceDouble">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdditionService/AddServiceDouble" message="tns:AdditionService_AddServiceDouble_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdditionService/AddServiceDoubleResponse" message="tns:AdditionService_AddServiceDouble_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Division">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdditionService/Division" message="tns:AdditionService_Division_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdditionService/DivisionResponse" message="tns:AdditionService_Division_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+  <wsdl:binding name="BasicHttpBinding_AdditionService" type="tns:AdditionService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Addition">
-      <soap:operation soapAction="http://tempuri.org/IService1/Addition" style="document" />
+    <wsdl:operation name="AddServiceInt">
+      <soap:operation soapAction="http://tempuri.org/AdditionService/AddServiceInt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddServiceDouble">
+      <soap:operation soapAction="http://tempuri.org/AdditionService/AddServiceDouble" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Division">
+      <soap:operation soapAction="http://tempuri.org/AdditionService/Division" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -31,7 +69,7 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
-    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+    <wsdl:port name="BasicHttpBinding_AdditionService" binding="tns:BasicHttpBinding_AdditionService">
       <soap:address location="http://localhost:64529/MyMulServiceHost.svc" />
     </wsdl:port>
   </wsdl:service>

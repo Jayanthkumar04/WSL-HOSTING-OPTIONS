@@ -12,49 +12,77 @@ namespace AddServiceClient.AddServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AddServiceReference.IService1")]
-    public interface IService1 {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AddServiceReference.AdditionService")]
+    public interface AdditionService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Addition", ReplyAction="http://tempuri.org/IService1/AdditionResponse")]
-        int Addition(int a, int b);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/AddServiceInt", ReplyAction="http://tempuri.org/AdditionService/AddServiceIntResponse")]
+        int AddServiceInt(int a, int b);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Addition", ReplyAction="http://tempuri.org/IService1/AdditionResponse")]
-        System.Threading.Tasks.Task<int> AdditionAsync(int a, int b);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/AddServiceInt", ReplyAction="http://tempuri.org/AdditionService/AddServiceIntResponse")]
+        System.Threading.Tasks.Task<int> AddServiceIntAsync(int a, int b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/AddServiceDouble", ReplyAction="http://tempuri.org/AdditionService/AddServiceDoubleResponse")]
+        double AddServiceDouble(double a, double b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/AddServiceDouble", ReplyAction="http://tempuri.org/AdditionService/AddServiceDoubleResponse")]
+        System.Threading.Tasks.Task<double> AddServiceDoubleAsync(double a, double b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/Division", ReplyAction="http://tempuri.org/AdditionService/DivisionResponse")]
+        double Division(int a, int b);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/Division", ReplyAction="http://tempuri.org/AdditionService/DivisionResponse")]
+        System.Threading.Tasks.Task<double> DivisionAsync(int a, int b);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : AddServiceClient.AddServiceReference.IService1, System.ServiceModel.IClientChannel {
+    public interface AdditionServiceChannel : AddServiceClient.AddServiceReference.AdditionService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<AddServiceClient.AddServiceReference.IService1>, AddServiceClient.AddServiceReference.IService1 {
+    public partial class AdditionServiceClient : System.ServiceModel.ClientBase<AddServiceClient.AddServiceReference.AdditionService>, AddServiceClient.AddServiceReference.AdditionService {
         
-        public Service1Client() {
+        public AdditionServiceClient() {
         }
         
-        public Service1Client(string endpointConfigurationName) : 
+        public AdditionServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
+        public AdditionServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public AdditionServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public AdditionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public int Addition(int a, int b) {
-            return base.Channel.Addition(a, b);
+        public int AddServiceInt(int a, int b) {
+            return base.Channel.AddServiceInt(a, b);
         }
         
-        public System.Threading.Tasks.Task<int> AdditionAsync(int a, int b) {
-            return base.Channel.AdditionAsync(a, b);
+        public System.Threading.Tasks.Task<int> AddServiceIntAsync(int a, int b) {
+            return base.Channel.AddServiceIntAsync(a, b);
+        }
+        
+        public double AddServiceDouble(double a, double b) {
+            return base.Channel.AddServiceDouble(a, b);
+        }
+        
+        public System.Threading.Tasks.Task<double> AddServiceDoubleAsync(double a, double b) {
+            return base.Channel.AddServiceDoubleAsync(a, b);
+        }
+        
+        public double Division(int a, int b) {
+            return base.Channel.Division(a, b);
+        }
+        
+        public System.Threading.Tasks.Task<double> DivisionAsync(int a, int b) {
+            return base.Channel.DivisionAsync(a, b);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,13 +12,26 @@ namespace AddServiceClient
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            AdditionServiceClient c = new AdditionServiceClient();
 
+            try
+            {
+                Response.Write(c.Division(10, 0));
+            }
+            catch (FaultException ex)
+            {
+                Response.Write(ex.Message);
+            }
+
+        
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Service1Client client = new Service1Client("BasicHttpBinding_IService1");
-            Response.Write(client.Addition(5, 5));
+            AdditionServiceClient client = new AdditionServiceClient("BasicHttpBinding_AdditionService");
+            Response.Write(client.AddServiceInt(10,20));
+
+
         }
     }
 }

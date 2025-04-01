@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="Addition">
+  <xs:element name="AddServiceInt">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="a" type="xs:int" />
@@ -8,10 +8,40 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AdditionResponse">
+  <xs:element name="AddServiceIntResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AdditionResult" type="xs:int" />
+        <xs:element minOccurs="0" name="AddServiceIntResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddServiceDouble">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="a" type="xs:double" />
+        <xs:element minOccurs="0" name="b" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddServiceDoubleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddServiceDoubleResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Division">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="a" type="xs:int" />
+        <xs:element minOccurs="0" name="b" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DivisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DivisionResult" type="xs:double" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

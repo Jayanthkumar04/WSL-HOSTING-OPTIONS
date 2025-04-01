@@ -5,23 +5,26 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace AddService
+namespace StudentService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-    [ServiceContract(Name ="AdditionService")]
+    [ServiceContract]
     public interface IService1
     {
-        [OperationContract(Name ="AddServiceInt")]
-        int Addition(int a, int b);
-
-        [OperationContract(Name ="AddServiceDouble")]
-        double Addition(double a, double b);
-
         [OperationContract]
-        double Division(int a,int b);
+        void Data(Student student);
 
-            
     }
 
-   
+    [DataContract]
+    public class Student
+    { 
+        public int Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+
+    }
+
 }
