@@ -9,7 +9,70 @@
 //------------------------------------------------------------------------------
 
 namespace AddServiceClient.AddServiceReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DivFault", Namespace="http://schemas.datacontract.org/2004/07/AddService")]
+    [System.SerializableAttribute()]
+    public partial class DivFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OperationMessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OperationMessage {
+            get {
+                return this.OperationMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OperationMessageField, value) != true)) {
+                    this.OperationMessageField = value;
+                    this.RaisePropertyChanged("OperationMessage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AddServiceReference.AdditionService")]
@@ -28,6 +91,7 @@ namespace AddServiceClient.AddServiceReference {
         System.Threading.Tasks.Task<double> AddServiceDoubleAsync(double a, double b);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/Division", ReplyAction="http://tempuri.org/AdditionService/DivisionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(AddServiceClient.AddServiceReference.DivFault), Action="http://tempuri.org/AdditionService/DivisionDivFaultFault", Name="DivFault", Namespace="http://schemas.datacontract.org/2004/07/AddService")]
         double Division(int a, int b);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdditionService/Division", ReplyAction="http://tempuri.org/AdditionService/DivisionResponse")]

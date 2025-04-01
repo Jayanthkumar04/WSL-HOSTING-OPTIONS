@@ -23,6 +23,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="0996046b-010b-4e48-86f4-f409555f72f7" SourceId="1" SourceUrl="http://localhost:64529/MyMulServiceHost.svc?wsdl" />
+    <MetadataFile FileName="MyMulServiceHost2.xsd" MetadataType="Schema" ID="0cd8d5de-0df5-46b0-9dd0-3521d6ab0b59" SourceId="1" SourceUrl="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd2" />
     <MetadataFile FileName="MyMulServiceHost.disco" MetadataType="Disco" ID="6001713b-2ac3-4097-8105-de0997c546b3" SourceId="1" SourceUrl="http://localhost:64529/MyMulServiceHost.svc?disco" />
     <MetadataFile FileName="MyMulServiceHost.xsd" MetadataType="Schema" ID="c3810a0b-e795-4eca-aefd-8bf5e20e7059" SourceId="1" SourceUrl="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd0" />
     <MetadataFile FileName="MyMulServiceHost1.xsd" MetadataType="Schema" ID="e6bd9d03-d89f-4412-b64b-231b01de8791" SourceId="1" SourceUrl="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd1" />

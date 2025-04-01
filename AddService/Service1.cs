@@ -30,7 +30,11 @@ namespace AddService
             }
             catch (Exception ex)
             {
-                throw new FaultException("The second Parameter cannot be zero");
+                DivFault fault = new DivFault();
+                fault.Message = "The second parameter cannot be zero";
+                fault.OperationMessage = ex.Message;
+                throw new FaultException<DivFault>(fault);
+                    
             }
         }
     }

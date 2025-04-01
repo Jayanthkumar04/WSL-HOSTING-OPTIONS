@@ -18,9 +18,10 @@ namespace AddServiceClient
             {
                 Response.Write(c.Division(10, 0));
             }
-            catch (FaultException ex)
+            catch (FaultException<DivFault> D)
             {
-                Response.Write(ex.Message);
+                Response.Write(D.Detail.Message+"<br>");
+                Response.Write(D.Detail.OperationMessage);
             }
 
         

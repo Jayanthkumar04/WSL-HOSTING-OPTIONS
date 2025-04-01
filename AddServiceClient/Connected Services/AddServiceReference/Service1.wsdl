@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:64529/MyMulServiceHost.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AddService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="AdditionService_AddServiceInt_InputMessage">
@@ -24,6 +25,9 @@
   <wsdl:message name="AdditionService_Division_OutputMessage">
     <wsdl:part name="parameters" element="tns:DivisionResponse" />
   </wsdl:message>
+  <wsdl:message name="AdditionService_Division_DivFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/AddService" name="detail" element="q1:DivFault" />
+  </wsdl:message>
   <wsdl:portType name="AdditionService">
     <wsdl:operation name="AddServiceInt">
       <wsdl:input wsaw:Action="http://tempuri.org/AdditionService/AddServiceInt" message="tns:AdditionService_AddServiceInt_InputMessage" />
@@ -36,6 +40,7 @@
     <wsdl:operation name="Division">
       <wsdl:input wsaw:Action="http://tempuri.org/AdditionService/Division" message="tns:AdditionService_Division_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdditionService/DivisionResponse" message="tns:AdditionService_Division_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/AdditionService/DivisionDivFaultFault" name="DivFaultFault" message="tns:AdditionService_Division_DivFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_AdditionService" type="tns:AdditionService">
@@ -66,6 +71,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DivFaultFault">
+        <soap:fault use="literal" name="DivFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
